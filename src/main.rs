@@ -2,6 +2,8 @@ use yew::prelude::*;
 pub mod components;
 pub mod scraper;
 
+use components::*;
+
 // #[function_component(App)]
 // fn app() -> Html {
 //     html! {
@@ -24,5 +26,6 @@ pub mod scraper;
 
 #[tokio::main]
 async fn main() {
-    //yew::start_app::<App>();
+    //scraper::yoink("https://linevoom.line.me/post/_dZQCYP7Znvb76iGh_uKJJ6ddW6EsmbG_QE79IMs/1164747613005013697").await;
+    yew::start_app::<app::App>();
 }

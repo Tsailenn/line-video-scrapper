@@ -1,4 +1,3 @@
-extern crate downloader;
 extern crate reqwest;
 extern crate select;
 
@@ -24,7 +23,7 @@ pub async fn scrape(url: &str) -> Result<String> {
 }
 
 pub async fn download(url: &str) -> Result<String> {
-    let mut p = current_dir()?.join("sussy-baka.mp4");
+    let p = current_dir()?.join("sussy-baka.mp4");
 
     println!("{:#?}", p);
 
@@ -33,7 +32,7 @@ pub async fn download(url: &str) -> Result<String> {
     let mut dest = File::create(&p)?;
 
     while let Some(bytes) = resp.chunk().await? {
-        dest.write_all(&bytes);
+        dest.write_all(&bytes)?;
     }
 
     Ok(String::from(p.as_os_str().to_str().unwrap()))
